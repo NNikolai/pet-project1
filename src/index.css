@@ -1,13 +1,69 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@import url('https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@400;500;700;900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    font-family: 'Red Hat Display', sans-serif;
+  }
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+@layer components {
+  .container {
+    @apply max-w-[1080px];
+  }
+
+  .btn {
+    @apply max-w-fit inline-block mt-6 py-[10px] px-8 rounded-2xl text-xl tracking-tighter sm:text-center sm:mt-4 sm:text-base sm:max-w-full;
+  }
+}
+
+.burger {
+  height: 20px;
+  position: relative;
+  width: 30px;
+}
+
+.burger-line {
+  display: flex;
+  width: 30px;
+  height: 2px;
+  background: #d70026;
+  transition: 0.3s all ease;
+}
+
+.top-line {
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+.mid-line {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translate(0, -50%);
+}
+
+.bottom-line {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+}
+
+.burger.active > .top-line {
+  transform: translateY(8px) rotate(45deg);
+  transition: 0.3s all ease;
+}
+
+.burger.active > .mid-line {
+  opacity: 0;
+  transition: 0.3s all ease;
+}
+
+.burger.active > .bottom-line {
+  transform: translateY(-10px) rotate(-45deg);
+  transition: 0.3s all ease;
 }
